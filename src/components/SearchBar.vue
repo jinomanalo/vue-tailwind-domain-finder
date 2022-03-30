@@ -71,7 +71,6 @@ function useRouteToSearchView() {
   if (!inputSearch.value) return;
 
   searchStore.load(inputSearch.value);
-
   router.push({
     path: "/search-view",
     query: {
@@ -88,6 +87,10 @@ function useShowInputSearchValue() {
   let keyword = route.query?.searchKeyword;
   if (keyword) {
     inputSearch.value = keyword;
+
+    if (searchStore.results.length === 0) {
+      searchStore.load(inputSearch.value);
+    }
   }
 }
 
