@@ -1,5 +1,12 @@
 <script setup>
+import { onBeforeMount } from "vue";
+import { useSearchStore } from "./stores/search";
 import TopNavbarVue from "./components/TopNavbar.vue";
+
+const searchStore = useSearchStore();
+onBeforeMount(() => {
+  searchStore.getUserLocation();
+});
 </script>
 
 <template>

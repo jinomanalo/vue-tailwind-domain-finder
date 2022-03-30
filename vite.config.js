@@ -19,6 +19,12 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+      "/user-location": {
+        target: `https://api.ipregistry.co/152.32.99.227?key=rffwralevq2y5aq8`,
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/user-location/, ""),
+      },
     },
   },
 });
