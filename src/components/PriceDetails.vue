@@ -1,11 +1,8 @@
 <template>
   <div
-    v-if="data.purchasePrice === undefined && data.renewalPrice === undefined"
-    class="text-xs md:text-sm"
+    v-if="data.purchasePrice !== undefined && data.renewalPrice !== undefined"
+    class="flex flex-col"
   >
-    Unavailable
-  </div>
-  <div v-else class="flex flex-col">
     <span class="font-semibold text-emerald-400 text-xl">
       {{ data?.purchasePrice ? `$${data.purchasePrice}` : "" }}
     </span>
