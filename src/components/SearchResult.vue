@@ -1,7 +1,7 @@
 <template>
   <!-- Loading State -->
   <div
-    v-if="searchStore.loadingState"
+    v-if="loadingState.value"
     class="absolute top-10 w-full flex justify-center"
   >
     <!-- Spinner -->
@@ -28,11 +28,7 @@
   </div>
 
   <!-- Main Result -->
-  <div
-    :class="[
-      searchStore.loadingState ? 'animate-pulse blur-lg cursor-progress' : '',
-    ]"
-  >
+  <div :class="[loadingState ? 'animate-pulse blur-lg cursor-progress' : '']">
     <div
       v-if="searchStore.results.length > 0"
       class="transition ease-in-out flex flex-col mb-20 mt-8 mx-4 space-y-8"
@@ -140,18 +136,9 @@ import PriceDetails from "./PriceDetails.vue";
 
 const searchStore = useSearchStore();
 const featuredDomain = computed(() => searchStore.featuredDomain);
-const { customSorting } = storeToRefs(searchStore);
-const exactMatchAvailability = computed(() => {
-  let result = false;
+const { customSorting, loadingState } = storeToRefs(searchStore);
 
-  if (Object.keys(searchStore.exactMatch).length > 0) {
-    if (!searchStore.exactMatch?.purchasePrice && !searchStore?.renewalPrice) {
-      result = true;
-    }
-  }
-
-  return result;
-});
+console.log(loadingState.value);
 </script>
 
 <style></style>

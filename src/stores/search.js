@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import _bulkGroups from "./_bulkGroups";
 import _tlds from "./_tlds";
-import { requests, useApiSearch, useApiAvailability } from "../router/requests";
+import { requests, useApiAvailability } from "../router/requests";
 import axios from "axios";
 
 export const useSearchStore = defineStore("search", {
@@ -76,7 +76,7 @@ export const useSearchStore = defineStore("search", {
 
         payload = payload.split(/[, ]+/); //delimeter: space or comma
 
-        if (payload.length > 1) {
+        if (payload.length > 0) {
           let withTLD = payload.filter((n) => n.includes(".") === true);
           let withoutTLD = payload.filter((n) => n.includes(".") === false);
 

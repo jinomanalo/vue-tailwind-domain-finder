@@ -217,7 +217,6 @@ const refSearch = ref();
 
 function useRouteToSearchView() {
   if (!inputSearch.value) return;
-
   searchStore.load(inputSearch.value);
   router.push({
     path: "/search-view",
